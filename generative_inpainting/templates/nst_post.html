@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask image get</title>
+</head>
+<body>    
+    <br>
+    <h1 align="center"><d/h1>
+    <br>
+    <form align="center" action="/nst_post" method="POST" enctype="multipart/form-data">
+        <h2 align="center">이미지 업로드</h2>
+        <table align="center">
+            <!-- <tr>
+                <td><img class="refer_img" id="refer_img1" src="./static/images/rain_princess.jpg"></td>
+                <td><img class="refer_img" id="refer_img2" src="./static/images/the_stary_night.JPG"></td>
+                <td><img class="refer_img" id="refer_img3" src="./static/images/scream.jpg"></td>
+                <td><img class="refer_img" id="refer_img3" src="./static/images/zentangle_art.jpg"></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="refer_img" value="rain_princess.jpg"></td>
+                <td><input type="radio" name="refer_img" value="the_stary_night.JPG"></td>
+                <td><input type="radio" name="refer_img" value="scream.jpg"></td>
+                <td><input type="radio" name="refer_img" value="zentangle_art.jpg"></td>
+            </tr> -->
+ 
+        </table>
+        <h3 align="center">원본이미지</h3>
+        <div id='view_area'></div>
+        <td><img class="refer_img" id="img3" name="user_img"></td>
+        <td><div id="preview"></div></td>
+        <br>
+        <input type="file" name="user_img" id="user_img" value="userIMgage" />
+        <!-- <input type="submit" value="확인"/> -->
+        <br><br>
+        <h3 align="center">마스크 이미지</h3>
+        <div id='view_area'></div>
+        <td><img class="refer_img" id="img3" name="mask_img"></td>
+        <td><div id="preview2"></div></td>
+        <br>
+        <input type="file" name="mask_img" id="mask_img" value="maskIMgage" />
+        <input type="submit" value="확인"/>
+    </form>
+    <script>
+        var upload = document.querySelector('#user_img');
+        var upload2 = document.querySelector('#preview');
+        // var mask_upload = document.querySelector('#mask_img')
+        // var mask_upload2 = document.querySelector('#preview')
+
+        var reader = new FileReader();
+        reader.onload = (function () {
+
+        	this.image = document.createElement('img');
+        	var vm = this;
+
+        	return function (e) {
+        		vm.image.src = e.target.result
+        	}
+        })()
+
+        upload.addEventListener('change',function (e) {
+        	var get_file = e.target.files;
+
+        	if(get_file){
+        		reader.readAsDataURL(get_file[0]);
+       		 }
+        	image.style.maxWidth='500px';
+        	image.style.maxHeight='500px';
+        	preview.appendChild(image);
+            // preview2.appendChild(image)
+        })
+    </script>
+    <br><br><br>
+ 
+</body>
+</html>
